@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujaratvibe EMI Calculator - Instant EMI Calculation</title>
+    <link rel="canonical" href="https://gujaratvibe.com">  
+    <meta name="description" content="Easily calculate your mobile phone EMI with our free online tool. Get instant monthly installment estimates based on your loan amount, interest rate, and tenure. Compare options and plan your smartphone purchase smartly.">
+    <meta name="keywords" content="GujaratVibe EMI Calculator,mobile loan EMI calculator, phone EMI calculator, smartphone loan EMI, EMI for mobile, mobile finance calculator, personal loan for mobile, online EMI calculator, loan interest calculator">
+    <meta name="author" content="gujaratvibe">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gujaratvibe.com">  
+    <meta property="og:title" content="Gujaratvibe EMI Calculator - Instant Phone EMI Calculation">
+    <meta property="og:description" content="Instantly calculate your mobile loan EMI using our free online calculator. Get accurate monthly payment estimates for any smartphone loan — fast and hassle-free.">
+    <meta property="og:image" content="https://placehold.co/1200x630/2c7a7b/ffffff?text=Gujaratvibe+Mobile+Loan+EMI+Calculator"> <!-- IMPORTANT: Replace with a relevant image URL -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gujaratvibe.com">  
+    <meta property="twitter:title" content="Gujaratvibe EMI Calculator - Instant Phone EMI Calculation">
+    <meta property="twitter:description" content="Quickly estimate your mobile loan EMI with our free and easy-to-use online calculator. Enter loan amount, interest rate, and tenure to get accurate monthly installments for your smartphone purchase.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/2c7a7b/ffffff?text=Gujaratvibe+Mobile+Loan+EMI+Calculator"> <!-- IMPORTANT: Replace with a relevant image URL -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #f0f2f5;
+                overflow-x: hidden; /* Prevent horizontal scroll due to bobbles */
+            }
+            .bobble-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: -1;
+            }
+            .bobble {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                opacity: 0;
+                animation: bobble-animation 15s infinite ease-in-out;
+            }
+    
+            .bobble:nth-child(1) {
+                width: 80px; height: 80px;
+                left: 10%; top: 20%;
+                animation-delay: 0s;
+            }
+            .bobble:nth-child(2) {
+                width: 120px; height: 120px;
+                left: 80%; top: 50%;
+                animation-delay: 2s;
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .bobble:nth-child(3) {
+                width: 60px; height: 60px;
+                left: 30%; top: 70%;
+                animation-delay: 4s;
+            }
+            .bobble:nth-child(4) {
+                width: 100px; height: 100px;
+                left: 50%; top: 10%;
+                animation-delay: 6s;
+                background: rgba(255, 255, 255, 0.06);
+            }
+            .bobble:nth-child(5) {
+                width: 90px; height: 90px;
+                left: 5%; top: 90%;
+                animation-delay: 8s;
+            }
+            .bobble:nth-child(6) {
+                width: 70px; height: 70px;
+                left: 90%; top: 30%;
+                animation-delay: 10s;
+                background: rgba(255, 255, 255, 0.09);
+            }
+            .bobble:nth-child(7) {
+                width: 110px; height: 110px;
+                left: 20%; top: 0%;
+                animation-delay: 12s;
+            }
+            .bobble:nth-child(8) {
+                width: 75px; height: 75px;
+                left: 70%; top: 80%;
+                animation-delay: 14s;
+                background: rgba(255, 255, 255, 0.07);
+            }
+    
+        @keyframes bobble-animation {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Custom range slider styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #d1d5db; /* Tailwind gray-300 */
+            outline: none;
+            border-radius: 5px;
+            transition: opacity .2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #fcd34d; /* Tailwind amber-300 */
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #f59e0b; /* Tailwind amber-500 */
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #fcd34d; /* Tailwind amber-300 */
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #f59e0b; /* Tailwind amber-500 */
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed for content */
+            transition: max-height 0.3s ease-in;
+        }
+    </style>
+
+    <!-- Schema.org Markup for Website (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "GujaratVibe - Mobile Loan EMI Calculator",
+          "url": "https://gujaratvibe.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://gujaratvibe.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+        
+        <!-- Google AdSense Auto Ads Code (Paste your code here) -->
+
+
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Bobble Background -->
+    <div class="bobble-container">
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-amber-600" itemprop="name">Gujaratvibe EMI Calculator</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html#calculator" class="text-amber-500 font-medium">Home</a></li>
+                    <li><a href="index.html#content" class="text-gray-700 hover:text-amber-500 font-medium">Mobile Loans</a></li>
+                    <li><a href="index.html#faq" class="text-gray-700 hover:text-amber-500 font-medium">FAQs</a></li>
+                    <li><a href="about-us.html" class="text-gray-700 hover:text-amber-500 font-medium">About Us</a></li>
+                    <li><a href="contact-us.html" class="text-gray-700 hover:text-amber-500 font-medium">Contact Us</a></li>
+                    <li><a href="disclaimer.html" class="text-gray-700 hover:text-amber-500 font-medium">Disclaimer</a></li>
+                    <li><a href="privacy-policy.html" class="text-gray-700 hover:text-amber-500 font-medium">Privacy Policy</a></li>
+                    <li><a href="term-and-conditions.html" class="text-gray-700 hover:text-amber-500 font-medium">Term and conditions</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-8 p-4">
+
+        <!-- Calculator Section -->
+        <section id="calculator" class="bg-white p-8 rounded-lg shadow-xl mb-12 relative z-10" itemscope itemtype="https://schema.org/Calculator">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8" itemprop="name">Calculate Your Mobile Loan EMI Instantly</h2>
+            <p class="text-center text-gray-600 mb-8" itemprop="description">Use our easy-to-use calculator to determine your monthly EMI for a mobile phone loan. Adjust the loan amount, interest rate, and tenure to see instant results.</p>
+
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Input Controls -->
+                <div class="lg:w-1/2 space-y-8">
+                    <!-- Loan Amount -->
+                    <div>
+                        <label for="loanAmount" class="block text-lg font-medium text-gray-700 mb-2">STEP 01: Required Loan Amount</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-gray-600">₹</span>
+                            <input type="number" id="loanAmount" value="50000" min="50000" max="1000000"
+                                class="flex-grow p-3 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
+                                aria-label="Loan Amount Input">
+                        </div>
+                        <input type="range" id="loanAmountRange" min="50000" max="1000000" value="50000"
+                            class="w-full" aria-label="Loan Amount Slider">
+                        <div class="flex justify-between text-sm text-gray-500 mt-1">
+                            <span>Min ₹ 50,000</span>
+                            <span>Max ₹ 10 L</span>
+                        </div>
+                    </div>
+
+                    <!-- Interest Rate -->
+                    <div>
+                        <label for="interestRate" class="block text-lg font-medium text-gray-700 mb-2">STEP 02: Interest Rate</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <input type="number" id="interestRate" value="11" min="11" max="42" step="0.1"
+                                class="flex-grow p-3 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
+                                aria-label="Interest Rate Input">
+                            <span class="text-gray-600">%</span>
+                        </div>
+                        <input type="range" id="interestRateRange" min="11" max="42" value="11" step="0.1"
+                            class="w-full" aria-label="Interest Rate Slider">
+                        <div class="flex justify-between text-sm text-gray-500 mt-1">
+                            <span>Min 11%</span>
+                            <span>Max 42%</span>
+                        </div>
+                    </div>
+
+                    <!-- Loan Tenure -->
+                    <div>
+                        <label for="loanTenure" class="block text-lg font-medium text-gray-700 mb-2">STEP 03: Loan Tenure</label>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <input type="number" id="loanTenure" value="12" min="12" max="60"
+                                class="flex-grow p-3 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
+                                aria-label="Loan Tenure Input">
+                            <span class="text-gray-600">months</span>
+                        </div>
+                        <input type="range" id="loanTenureRange" min="12" max="60" value="12"
+                            class="w-full" aria-label="Loan Tenure Slider">
+                        <div class="flex justify-between text-sm text-gray-500 mt-1">
+                            <span>Min 12 months</span>
+                            <span>Max 60 months</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Display -->
+                <div class="lg:w-1/2 bg-gray-50 p-6 rounded-lg shadow-inner flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-6">Mobile Loan Calculator Summary</h3>
+
+                    <div class="relative w-48 h-48 mb-6">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100" role="img" aria-label="Loan Progress Circle">
+                            <circle class="text-gray-200" stroke-width="10" stroke="currentColor" fill="transparent" r="40" cx="50" cy="50"/>
+                            <circle id="emi-progress-circle" class="text-amber-500" stroke-width="10" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" stroke="currentColor" fill="transparent" r="40" cx="50" cy="50"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-amber-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.592 1L21 12m-6-4h4m2 4v2m-6 2h4m2 4v2M3 12l6.5-4.5M3 12l6.5 4.5M3 12l8.5 4.5M3 12l8.5-4.5" />
+                            </svg>
+                            <span class="text-lg font-semibold">Loan</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-xs space-y-4 text-left">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-amber-500 mr-2"></span>
+                                <span class="text-gray-600">Loan Amount</span>
+                            </div>
+                            <span id="displayLoanAmount" class="font-semibold text-gray-800">₹ 50,000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="w-3 h-3 rounded-full bg-gray-300 mr-2"></span>
+                                <span class="text-gray-600">Interest Payable</span>
+                            </div>
+                            <span id="displayInterestPayable" class="font-semibold text-gray-800">₹ 0</span>
+                        </div>
+                        <div class="border-t border-gray-200 pt-4 mt-4">
+                            <div class="flex justify-between items-center text-xl font-bold text-gray-900">
+                                <span>Monthly EMI</span>
+                                <span id="displayEMI">₹ 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section id="content" class="bg-white p-8 rounded-lg shadow-xl mb-12 relative z-10">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">What is a Mobile Loan? EMI Explained with Calculator</h2>
+            <div class="prose max-w-none text-gray-700">
+                <p class="mb-4">
+                    A <strong>mobile loan</strong> is a financing option that helps you buy a smartphone by paying through easy monthly installments (EMIs), instead of a full upfront payment. Whether you're eyeing the latest iPhone or a flagship Android, mobile loans make high-end phones more affordable, especially for salaried and self-employed users across India.
+                </p>
+        
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Benefits of Taking a Mobile Loan in India</h3>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Low-Cost EMIs:</strong> Divide your mobile’s cost into manageable EMIs that fit your monthly budget.</li>
+                    <li><strong>Fast Online Approval:</strong> Get instant loan approvals from leading NBFCs, banks, or fintech platforms — often with zero paperwork.</li>
+                    <li><strong>Flexible Repayment Options:</strong> Choose from tenures starting at 3 months and going up to 60 months.</li>
+                    <li><strong>Minimal Documents Needed:</strong> Just basic KYC like Aadhaar, PAN, and sometimes bank statements or salary slips.</li>
+                    <li><strong>No Credit Card Needed:</strong> Most mobile loans are offered even without a credit card, using only your PAN and Aadhaar.</li>
+                </ul>
+        
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">How to Calculate Mobile Loan EMI</h3>
+                <p class="mb-4">
+                    <strong>EMI (Equated Monthly Installment)</strong> is the fixed monthly payment you make toward your mobile loan. It includes both interest and principal, allowing you to repay the total amount over time in equal parts.
+                </p>
+        
+                <p class="mb-4">
+                    The EMI is calculated using the following formula:
+                </p>
+        
+                <p class="mb-4">
+                    $$EMI = P \times \frac{r \times (1 + r)^n}{(1 + r)^n - 1}$$
+                </p>
+        
+                <ul class="list-disc list-inside space-y-1 mt-2 mb-4">
+                    <li><strong>P:</strong> Loan amount (the price of the mobile phone)</li>
+                    <li><strong>r:</strong> Monthly interest rate (annual interest rate ÷ 12 ÷ 100)</li>
+                    <li><strong>n:</strong> Total number of EMIs (loan tenure in months)</li>
+                </ul>
+        
+                <p class="mb-4">
+                    For example, if you take a loan of ₹20,000 at 12% annual interest for 12 months, your EMI would be approximately ₹1,778. Our EMI calculator does this math instantly, giving you the monthly EMI, total interest, and total amount payable.
+                </p>
+        
+                <p class="mb-4">
+                    Use our <strong>GujaratVibe EMI Calculator</strong> to compare repayment plans, understand your affordability, and choose the right lender — all before applying. It’s fast, accurate, and 100% free.
+                </p>
+        
+                <p class="mb-4">
+                    Whether you're buying a phone from Flipkart, Amazon, Croma, or any offline store — this guide helps you make smart, debt-free choices for your tech purchase.
+                </p>
+            </div>
+        </section>
+        
+        
+        <!-- New Content Sections -->
+        <section id="personal-loan-factors" class="bg-white p-8 rounded-lg shadow-xl mb-12 relative z-10">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">What Influences Mobile Loan EMI?</h2>
+            <p>Understanding the key elements that determine your <strong>Mobile loan EMI</strong> is crucial for smarter financial planning. These factors directly affect how much you pay monthly and the total cost of borrowing:</p>
+        
+            <ul class="list-disc list-inside space-y-2 mb-4">
+                <li><strong>Loan Amount (Principal):</strong> This is the total amount you borrow. Higher loan amounts generally lead to higher EMIs. It also affects your debt-to-income ratio and future credit eligibility.</li>
+                <li><strong>Interest Rate:</strong> The rate charged by the lender influences the interest portion of your EMI. Lower interest rates help reduce the total repayment. Fixed-rate loans offer consistency, while floating rates may vary over time.</li>
+                <li><strong>Loan Tenure:</strong> Longer tenure lowers your monthly EMI but increases overall interest paid. Shorter tenures mean higher EMIs but lower total interest. Finding the right balance is important based on your income and financial goals.</li>
+                <li><strong>Processing Fees & Hidden Charges:</strong> These one-time costs add to your loan’s effective cost, even though they’re not part of the EMI itself.</li>
+                <li><strong>Credit Score:</strong> A strong CIBIL score can help you secure better interest rates, indirectly lowering your EMI.</li>
+                <li><strong>EMI Payment Frequency:</strong> Monthly vs. quarterly EMIs can impact your cash flow. Monthly EMIs are most common and budget-friendly.</li>
+                <li><strong>Prepayments:</strong> Paying extra toward your loan principal reduces the interest burden and may shorten your loan tenure. Use this when you have surplus funds or bonuses.</li>
+            </ul>
+        
+            <hr class="my-8 border-t border-gray-200">
+        
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">How is Mobile Loan EMI Calculated?</h2>
+
+            <p>Though online EMI calculators make it simple, the EMI formula used is:</p>
+        
+            <div class="formula">
+                $$ \text{EMI} = \frac{P \times R \times (1+R)^N}{(1+R)^N - 1} $$
+                <p>Where:</p>
+                <ul class="list-disc list-inside space-y-1 mt-2">
+                    <li><strong>P</strong> = Principal loan amount</li>
+                    <li><strong>R</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100)</li>
+                    <li><strong>N</strong> = Loan duration in months</li>
+                </ul>
+            </div>
+        
+            <div class="example-box bg-gray-50 p-6 rounded-lg shadow-inner mt-8">
+                <p>Example: For a ₹5,00,000 Mobile loan at 10.70% annual interest for 60 months, the monthly EMI will be around ₹10,829. Using an online EMI calculator is faster, more accurate, and saves you from manual errors.</p>
+            </div>
+        
+            <hr class="my-8 border-t border-gray-200">
+        
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">What is EMI in a Loan?</h2>
+            <p><strong>EMI</strong>, or <strong>Equated Monthly Instalment</strong>, refers to the fixed amount you repay every month to clear your loan. Each EMI includes a portion of the loan principal and the interest accrued. Initially, EMIs contain more interest, while later payments cover more principal.</p>
+            <p>This repayment structure helps borrowers predict monthly expenses and manage finances efficiently before taking a loan. An EMI calculator lets you preview this amount in seconds.</p>
+        
+            <hr class="my-8 border-t border-gray-200">
+        
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Steps to Use a Mobile Loan EMI Calculator</h2>
+            <p>Most online EMI calculators are simple and interactive. Here’s how you can use one:</p>
+        
+            <ol class="list-decimal list-inside space-y-2 mb-4">
+                <li><strong>Enter Loan Amount:</strong> Set how much you plan to borrow.</li>
+                <li><strong>Input Interest Rate:</strong> Use your lender’s rate or adjust using the slider.</li>
+                <li><strong>Choose Loan Tenure:</strong> Select the duration in months or years.</li>
+                <li><strong>View EMI Instantly:</strong> The calculator will instantly display your monthly payment.</li>
+                <li><strong>Check Amortization Table:</strong> Some tools show a breakdown of every month’s interest and principal components.</li>
+            </ol>
+            <p>Try multiple combinations to find the most affordable EMI plan that suits your monthly budget.</p>
+        
+            <hr class="my-8 border-t border-gray-200">
+        
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Types of EMI Calculators</h2>
+            <p>Various loan-specific EMI calculators are available online to help users make better financial decisions:</p>
+        
+            <ul class="list-disc list-inside space-y-2 mb-4">
+                <li><strong>Mobile Loan EMI Calculator:</strong> For unsecured loans used for travel, medical, education, or wedding expenses.</li>
+                <li><strong>Home Loan EMI Calculator:</strong> Helps plan large, long-term mortgage repayments.</li>
+                <li><strong>Car Loan EMI Calculator:</strong> Tailored for automobile loans, often used by salaried individuals.</li>
+                <li><strong>Business Loan EMI Calculator:</strong> Useful for startups and enterprises planning loan-based expansion.</li>
+            </ul>
+        
+            <hr class="my-8 border-t border-gray-200">
+        
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Why Use an Online EMI Calculator?</h2>
+            <p>There are several advantages of using a free online EMI calculator:</p>
+        
+            <ul class="list-disc list-inside space-y-2 mb-4">
+                <li><strong>Fast Results:</strong> Get your monthly payment details in real time.</li>
+                <li><strong>Easy Access:</strong> Available 24/7 from your mobile or desktop without any downloads.</li>
+                <li><strong>Accurate Projections:</strong> Avoid manual mistakes by relying on system-generated results.</li>
+                <li><strong>Compare Loan Options:</strong> Modify inputs to compare EMIs for different tenures and interest rates.</li>
+                <li><strong>Smart Budgeting:</strong> Plan ahead by estimating your EMI before applying for a loan, improving financial discipline.</li>
+            </ul>
+        
+            <p>Want to see your EMI for a specific loan? Try our <strong>GujaratVibe EMI Calculator</strong> now to get started instantly!</p>
+        </section>
+        
+
+        <!-- FAQ Section -->
+        <section id="faq" class="bg-white p-8 rounded-lg shadow-xl relative z-10" itemscope itemtype="https://schema.org/FAQPage">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Frequently Asked Questions About Mobile Loans</h2>
+            <div class="space-y-4">
+               <!-- FAQ Item 1 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700 rounded-t-md" aria-expanded="false">
+        <span itemprop="name">Mobile loan kya hota hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600 rounded-b-md" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Mobile loan ek aisa personal loan hota hai jo khaas taur par smartphone kharidne ke liye liya jata hai. Isme aap phone ki keemat ko ek hi baar dene ke bajay EMI (mahina mahina kiston) me chuka sakte hain.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 2 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Mobile loan ki EMI kaise calculate hoti hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">EMI calculation me teen cheezein maayne rakhti hain: principal (loan amount), annual interest rate aur tenure (mahino me). Hamara online EMI calculator in saari values ko formula me daal kar turant aapko exact monthly installment dikhata hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 3 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">India me mobile loan ke liye kaunse documents chahiye hote hain?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Aam taur par KYC documents (Aadhaar, PAN), address proof (bijli bill, rent agreement, etc.) aur kabhi kabhi income proof / bank statements mangi ja sakti hain. Exact requirement lender ki policy par depend karti hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 4 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Kya main apna mobile loan jaldi prepay kar sakta/ sakti hoon?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Haan, zyada tar lenders prepayment allow karte hain—partial ya full. Lekin kuch lenders prepayment/foreclosure charges bhi lete hain. Prepay karne se pehle apne lender ki terms jarur padh lein.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 5 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Mobile phone ke liye maximum loan amount kitna mil sakta hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Maximum loan amount aapki credit profile, income, repayment capacity aur lender ki internal policies par depend karta hai. Calculator me aap ₹10 lakh tak ki EMI estimate kar sakte hain, lekin final eligibility lender decide karta hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 6 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Mobile loan par interest rate kitna hota hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Interest rate lender ke hisab se vary karta hai aur aapke credit score, income, tenure aur market conditions par depend karta hai. Accurate rate ke liye lender se official quote lena sabse behtar hota hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 7 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Zero-cost EMI kya sach me zero interest hota hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Zero-cost EMI plans me interest ko aksar merchant discount ya cashback se adjust kiya jata hai, lekin processing fees, GST ya hidden charges ho sakte hain. Hamesha fine print padhein.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 8 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Credit score (CIBIL) mobile loan approval ko kaise affect karta hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Achha credit score aapki approval chances badhata hai aur interest rate ko kam kar sakta hai. Low score hone par loan reject ya high interest rate offer ho sakta hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 9 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Processing fee aur GST lagta hai kya mobile loan par?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Haan, kai lenders processing fee charge karte hain jiske upar GST applicable hota hai. Ye fee fix ya loan amount ka percentage ho sakti hai. Lender ki fee structure check zarur karein.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 10 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">NBFC aur bank ke mobile loan me kya difference hota hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Banks aam taur par lower interest rate de sakte hain, lekin processing time zyada ho sakta hai. NBFCs approval jaldi dete hain, par rate aur charges kabhi kabhi thode high ho sakte hain. Compare karna hamesha faydemand hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 11 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Kya students bina income proof ke mobile loan le sakte hain?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Generally, income proof ya co-applicant/guarantor ki requirement hoti hai. Kuch NBFCs aur fintech BNPL (Buy Now, Pay Later) ya card-based EMI options dete hain jo students use kar sakte hain, par eligibility vary karti hai.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 12 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Agar main EMI miss kar doon to kya hoga?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Missed EMI par penal interest/late payment fee lag sakti hai aur aapka credit score bhi gir sakta hai. Regular defaults future me loan approval mushkil bana dete hain.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 13 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Part-prepayment aur foreclosure me kya farak hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Part-prepayment me aap loan ka kuch hissa extra chuka dete hain jisse principal kam ho jata hai. Foreclosure me aap pura bacha hua loan ek saath chuka kar account close kar dete hain. Dono par charges lender policy ke hisab se ho sakte hain.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 14 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Kya GujaratVibe.com ka EMI calculator free hai? Kitna accurate hai?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Haan, hamara EMI calculator bilkul free hai. Ye standard financial formula par based hai, isliye results accurate hote hain—lekin final terms lender par depend karte hain, isliye isse ek illustrative estimate ke roop me dekhein.</p>
+    </div>
+</div>
+
+<!-- FAQ Item 15 -->
+<div class="faq-item rounded-md overflow-hidden" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+    <button class="faq-question w-full text-left p-4 bg-gray-50 hover:bg-gray-100 flex justify-between items-center text-lg font-medium text-gray-700" aria-expanded="false">
+        <span itemprop="name">Apni EMI ko kam kaise kar sakta/ sakti hoon?</span>
+        <span class="faq-icon transform transition-transform duration-300">+</span>
+    </button>
+    <div class="faq-answer p-4 bg-white text-gray-600" itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+        <p itemprop="text">Aap longer tenure choose karke, higher down payment dekar, achha credit score maintain karke ya low-interest rate lender select karke EMI kam kar sakte hain. Part-prepayment bhi total interest burden ko reduce karta hai.</p>
+    </div>
+</div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 px-6 mt-8 rounded-t-lg">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 GujaratVibe EMI Calculator. All rights reserved.</p>
+            <p class="mt-2">Disclaimer: The EMI values generated by this calculator are for informational purposes only. Actual EMI amounts, interest rates, and repayment terms may vary depending on the lender's policies, credit profile, and specific loan agreement. Please consult your financial provider for precise figures before making any borrowing decisions.
+            </p> <br>
+            <ul class="flex space-x-6" style="justify-content: center">
+                <li><a href="index.html" class="hover:text-amber-500 font-medium">Home</a></li>
+                <li><a href="index.html#content" class=" hover:text-amber-500 font-medium">Mobile Loans</a></li>
+                <li><a href="index.html#faq" class="hover:text-amber-500 font-medium ">FAQs</a></li>
+                <li><a href="about-us.html" class=" hover:text-amber-500 font-medium">About Us</a></li>
+                <li><a href="contact-us.html" class="hover:text-amber-500 font-medium">Contact Us</a></li>
+                <li><a href="disclaimer.html" class=" hover:text-amber-500 font-medium">Disclaimer</a></li>
+                <li><a href="privacy-policy.html" class=" hover:text-amber-500 font-medium">Privacy Policy</a></li>
+                <li><a href="term-and-conditions.html" class=" hover:text-amber-500 font-medium">Term and conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize MathJax for LaTeX rendering
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+    <script>
+        const loanAmountInput = document.getElementById('loanAmount');
+        const loanAmountRange = document.getElementById('loanAmountRange');
+        const interestRateInput = document.getElementById('interestRate');
+        const interestRateRange = document.getElementById('interestRateRange');
+        const loanTenureInput = document.getElementById('loanTenure');
+        const loanTenureRange = document.getElementById('loanTenureRange');
+
+        const displayLoanAmount = document.getElementById('displayLoanAmount');
+        const displayInterestPayable = document.getElementById('displayInterestPayable');
+        const displayEMI = document.getElementById('displayEMI');
+        const emiProgressCircle = document.getElementById('emi-progress-circle');
+
+        // Function to calculate EMI
+        function calculateEMI() {
+            const P = parseFloat(loanAmountInput.value);
+            const R_annual = parseFloat(interestRateInput.value);
+            const N = parseFloat(loanTenureInput.value);
+
+            if (isNaN(P) || isNaN(R_annual) || isNaN(N) || P <= 0 || R_annual <= 0 || N <= 0) {
+                displayEMI.textContent = '₹ 0';
+                displayInterestPayable.textContent = '₹ 0';
+                emiProgressCircle.style.strokeDashoffset = 251.2; // Full circle
+                return;
+            }
+
+            const r = R_annual / (12 * 100); // Monthly interest rate
+            const emi = P * r * Math.pow((1 + r), N) / (Math.pow((1 + r), N) - 1);
+
+            const totalPayable = emi * N;
+            const totalInterestPayable = totalPayable - P;
+
+            displayEMI.textContent = `₹ ${emi.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+            displayInterestPayable.textContent = `₹ ${totalInterestPayable.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+            displayLoanAmount.textContent = `₹ ${P.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+
+            // Update progress circle (representing loan amount vs total payable)
+            // This is a conceptual representation. A more accurate one would require more complex data.
+            // Here, we'll make the progress fill up as loan amount increases relative to max.
+            const maxLoanAmount = parseFloat(loanAmountRange.max);
+            const progress = (P / maxLoanAmount) * 100;
+            const circumference = 2 * Math.PI * 40; // 2 * pi * radius
+            const offset = circumference - (progress / 100) * circumference;
+            emiProgressCircle.style.strokeDashoffset = offset;
+        }
+
+        // Sync input and range values
+        loanAmountInput.addEventListener('input', () => {
+            loanAmountRange.value = loanAmountInput.value;
+            calculateEMI();
+        });
+        loanAmountRange.addEventListener('input', () => {
+            loanAmountInput.value = loanAmountRange.value;
+            calculateEMI();
+        });
+
+        interestRateInput.addEventListener('input', () => {
+            interestRateRange.value = interestRateInput.value;
+            calculateEMI();
+        });
+        interestRateRange.addEventListener('input', () => {
+            interestRateInput.value = interestRateRange.value;
+            calculateEMI();
+        });
+
+        loanTenureInput.addEventListener('input', () => {
+            loanTenureRange.value = loanTenureInput.value;
+            calculateEMI();
+        });
+        loanTenureRange.addEventListener('input', () => {
+            loanTenureInput.value = loanTenureRange.value;
+            calculateEMI();
+        });
+
+        // Initial calculation
+        calculateEMI();
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const icon = button.querySelector('.faq-icon');
+
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item.active').forEach(item => {
+                    if (item !== faqItem) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-answer').style.maxHeight = 0;
+                        item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                        item.querySelector('.faq-icon').textContent = '+';
+                    }
+                });
+
+                // Toggle current FAQ
+                faqItem.classList.toggle('active');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px'; // Set to actual height
+                    button.setAttribute('aria-expanded', 'true');
+                    icon.textContent = '-';
+                } else {
+                    answer.style.maxHeight = 0;
+                    button.setAttribute('aria-expanded', 'false');
+                    icon.textContent = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

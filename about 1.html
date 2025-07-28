@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - GujaratVibe EMI Calculator</title>
+    <link rel="canonical" href="https://gujaratvibe.com/about-us"> <!-- IMPORTANT: Replace with your actual website URL for this page -->
+    <meta name="description" content="Explore how Mobile Loan EMI Calculator simplifies mobile financing with accurate EMI estimates, helpful insights, and a commitment to empowering users financially.">
+    <meta name="keywords" content="about us, mobile loan, EMI calculator, finance, smartphone finance, our mission">
+    <meta name="author" content="gujaratvibe">
+
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gujaratvibe.com/about-us"> <!-- IMPORTANT: Replace with your actual website URL for this page -->
+    <meta property="og:title" content="About Us - GujaratVibe EMI Calculator">
+    <meta property="og:description" content="Discover how GujaratVibe EMI Calculator makes smartphone financing easy with precise EMI estimates and trusted guidance to support smarter financial choices.">
+    <meta property="og:image" content="https://placehold.co/1200x630/2c7a7b/ffffff?text=About+Us"> <!-- IMPORTANT: Replace with a relevant image URL -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://gujaratvibe.com/about-us"> <!-- IMPORTANT: Replace with your actual website URL for this page -->
+    <meta property="twitter:title" content="About Us - GujaratVibe EMI Calculator">
+    <meta property="twitter:description" content="Explore how GujaratVibe EMI Calculator helps you manage mobile finance better with accurate EMI results and smart insights for confident borrowing decisions.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/2c7a7b/ffffff?text=About+Us"> <!-- IMPORTANT: Replace with a relevant image URL -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            overflow-x: hidden;
+        }
+        /* Bobble styles are not strictly needed for a static page but can be included for consistency */
+        .bobble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .bobble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            opacity: 0;
+            animation: bobble-animation 15s infinite ease-in-out;
+        }
+
+        .bobble:nth-child(1) { width: 80px; height: 80px; left: 10%; top: 20%; animation-delay: 0s; }
+        .bobble:nth-child(2) { width: 120px; height: 120px; left: 80%; top: 50%; animation-delay: 2s; background: rgba(255, 255, 255, 0.08); }
+        .bobble:nth-child(3) { width: 60px; height: 60px; left: 30%; top: 70%; animation-delay: 4s; }
+        .bobble:nth-child(4) { width: 100px; height: 100px; left: 50%; top: 10%; animation-delay: 6s; background: rgba(255, 255, 255, 0.06); }
+        .bobble:nth-child(5) { width: 90px; height: 90px; left: 5%; top: 90%; animation-delay: 8s; }
+        .bobble:nth-child(6) { width: 70px; height: 70px; left: 90%; top: 30%; animation-delay: 10s; background: rgba(255, 255, 255, 0.09); }
+        .bobble:nth-child(7) { width: 110px; height: 110px; left: 20%; top: 0%; animation-delay: 12s; }
+        .bobble:nth-child(8) { width: 75px; height: 75px; left: 70%; top: 80%; animation-delay: 14s; background: rgba(255, 255, 255, 0.07); }
+
+        @keyframes bobble-animation {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Bobble Background -->
+    <div class="bobble-container">
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+        <div class="bobble"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-xl md:text-2xl font-bold text-amber-600" itemprop="name">
+                <a href="https://gujaratvibe.com">Gujaratvibe EMI Calculator</a>
+            </h1>
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center">
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="text-amber-500 font-medium">Home</a></li>
+                    <li><a href="index.html#content" class="text-gray-700 hover:text-amber-500 font-medium">Mobile Loans</a></li>
+                    <li><a href="index.html#faq" class="text-gray-700 hover:text-amber-500 font-medium">FAQs</a></li>
+                    <li><a href="about-us.html" class="text-gray-700 hover:text-amber-500 font-medium">About Us</a></li>
+                    <li><a href="contact-us.html" class="text-gray-700 hover:text-amber-500 font-medium">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <ul class="flex flex-col items-center space-y-4 py-4">
+                <li><a href="index.html" class="text-amber-500 font-medium">Home</a></li>
+                <li><a href="index.html#content" class="text-gray-700 hover:text-amber-500 font-medium">Mobile Loans</a></li>
+                <li><a href="index.html#faq" class="text-gray-700 hover:text-amber-500 font-medium">FAQs</a></li>
+                <li><a href="about-us.html" class="text-gray-700 hover:text-amber-500 font-medium">About Us</a></li>
+                <li><a href="contact-us.html" class="text-gray-700 hover:text-amber-500 font-medium">Contact Us</a></li>
+                <li><a href="disclaimer.html" class="text-gray-700 hover:text-amber-500 font-medium">Disclaimer</a></li>
+                <li><a href="privacy-policy.html" class="text-gray-700 hover:text-amber-500 font-medium">Privacy Policy</a></li>
+                <li><a href="term-and-conditions.html" class="text-gray-700 hover:text-amber-500 font-medium">Term and conditions</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- Main Content - About Us -->
+    <main class="container mx-auto my-8 p-4">
+        <section id="about-us" class="bg-white p-8 rounded-lg shadow-xl relative z-10">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">About us – GujaratVibe.com</h2>
+            <div class="prose max-w-none text-gray-700">
+
+                <p class="mb-4">
+                    Welcome to <strong>GujaratVibe.com</strong> your go to platform for smart, hassle-free financial planning when it comes to buying mobile phones on EMI. In a world that thrives on connectivity and cutting-edge gadgets, we understand how important it is to own the right smartphone without straining your budget. That’s where we come in.                </p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Vision
+                </h3>
+                <p class="mb-4">
+                    At <strong>Gujarat Vibe</strong>, our vision is simple yet powerful to make mobile phone financing accessible, transparent, and stress-free for everyone. Whether you're a student, a working professional, or a homemaker, we aim to be your digital companion in making informed EMI-based purchases.                </p>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">What We Do</h3>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Calculate EMIs instantly</strong> based on loan amount, interest rate, and tenure.</li>
+                    <li><strong>Understand your repayment breakdown</strong> including interest and principal.</li>
+                    <li><strong>Gain clarity</strong> on how different loan options compare.</li>
+                    <li><strong> Make well-informed decisions</strong> before committing to a mobile phone loan.</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Why Choose GujaratVibe.com?</h3>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Accuracy You Can Trust: </strong>We use standard, reliable formulas to generate EMI estimates, ensuring financial clarity.</li>
+                    <li><strong>User-Centric Design: </strong>Our platform is optimized for simplicity - easy to use on desktop and mobile devices alike.</li>
+                    <li><strong>Educational Value: </strong>We go beyond numbers, offering helpful insights into mobile loan processes, eligibility, and tips.</li>
+                    <li><strong>Completely Free: </strong>No sign-ups. No charges. No catch.</li>
+                </ul>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Promise</h3>
+                <p class="mb-4">
+                    We’re committed to <strong>empowering users </strong>with tools that promote financial responsibility. While we provide useful estimates, we also encourage you to verify loan details with your preferred lenders. Our goal is to serve as a <strong>helpful guide</strong>, not a substitute for personalized financial advice.                </p>
+                <p>
+                    <strong>Thank you for visiting GujaratVibe.com</strong> - where smart planning meets modern technology. Whether you're upgrading to a flagship model or financing your first smartphone, we’re here to support your journey, one EMI at a time.    </p>
+                    <p class="mt-6 text-sm text-gray-600">
+                    Last updated: July 24, 2025
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4 mt-8 rounded-t-lg">
+        <div class="container mx-auto text-center text-sm">
+            <p>© 2025 GujaratVibe EMI Calculator. All rights reserved.</p>
+            <p class="mt-4 max-w-3xl mx-auto">
+                Disclaimer: The EMI values generated by this calculator are for informational purposes only. Actual EMI amounts, interest rates, and repayment terms may vary depending on the lender's policies, credit profile, and specific loan agreement. Please consult your financial provider for precise figures before making any borrowing decisions.
+            </p>
+            <div class="border-t border-gray-700 my-6"></div>
+            <ul class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+                <li><a href="index.html#calculator" class="hover:text-amber-500 font-medium">Home</a></li>
+                <li><a href="index.html#content" class="hover:text-amber-500 font-medium">Mobile Loans</a></li>
+                <li><a href="index.html#faq" class="hover:text-amber-500 font-medium">FAQs</a></li>
+                <li><a href="about-us.html" class="hover:text-amber-500 font-medium">About Us</a></li>
+                <li><a href="contact-us.html" class="hover:text-amber-500 font-medium">Contact Us</a></li>
+                <li><a href="disclaimer.html" class="hover:text-amber-500 font-medium">Disclaimer</a></li>
+                <li><a href="privacy-policy.html" class="hover:text-amber-500 font-medium">Privacy Policy</a></li>
+                <li><a href="term-and-conditions.html" class="hover:text-amber-500 font-medium">Term and conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+    <script>
+        
+        // **NEW** Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    
+    </script>
+
+</body>
+</html>
